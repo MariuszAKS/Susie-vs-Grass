@@ -66,8 +66,9 @@ position = Vector2(-56, 16)
 [node name="Marker6" type="Marker2D" parent="Grass"]
 position = Vector2(-120, 16)
 
-[node name="Susie" parent="." node_paths=PackedStringArray("destinations", "label_points") instance=ExtResource("2_acvdr")]
+[node name="Susie" parent="." node_paths=PackedStringArray("tilemap_layer", "destinations", "label_points") instance=ExtResource("2_acvdr")]
 position = Vector2(-120, -16)
+tilemap_layer = NodePath("../TileMapLayer")
 destinations = [NodePath("../Grass/Marker0"), NodePath("../Grass/Marker1"), NodePath("../Grass/Marker2"), NodePath("../Grass/Marker3"), NodePath("../Grass/Marker4"), NodePath("../Grass/Marker5"), NodePath("../Grass/Marker6")]
 label_points = NodePath("../Camera2D/Panel/Label2")
 
