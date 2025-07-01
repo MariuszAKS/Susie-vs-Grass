@@ -19,9 +19,18 @@ var distance_to_destination
 @export var label_points: Label
 var points = 0
 
+@onready var audio_stream_player = get_node("AudioStreamPlayer") as AudioStreamPlayer2D
+var sound_walk = preload("res://art/sound/Walk.wav")
+
+			
+			# audio_stream_player.stream = sound_dig
+			# audio_stream_player.play()
 
 func _ready():
 	coin_animations.animation_finished.connect(on_grass_picked)
+	audio_stream_player.finished.connect(on_audio_finished)
+	audio_stream_player.stream = sound_walk
+	audio_stream_player.play()
 
 	direction = (destinations[next_destination].global_position - global_position).normalized()
 
@@ -62,6 +71,11 @@ func on_grass_picked(_animation_name):
 	label_points.text = str(points)
 
 	start_walking()
+
+
+func on_audio_finished():
+	if audio_stream_player.stream == sound_walk:
+		audio_stream_player.play()
 
 
 func _process(delta):
